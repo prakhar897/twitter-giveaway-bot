@@ -11,5 +11,7 @@
 	"consumer-key": "Consumer Key Goes Here",
 	"consumer-secret": "Consumer Secret Goes Here",
 	"access-token-key": "Access Token Key Goes Here",
-	"access-token-secret": "Access Token Goes Here. Read README for HELP"
+	"access-token-secret": "Access Token Goes Here. Read README for HELP",
+        "tag-keywords": ['tag', 'comment', 'invite'],
+        "tag-usernames": ['BoarLittle', 'weatherby2019', 'dac5558', 'Ghostman45233']
 }
