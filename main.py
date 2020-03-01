@@ -128,11 +128,12 @@ def CheckForTagRequest(item):
         text = item['text']
         if any(word in text.lower() for word in tag_keywords):
                 try:
-
+                        print("Tag tweet id:", item['id'])
                         #T.post('statuses/update', { in_reply_to_status_id: tweetId, status: `@${userName}, I like golf too`
-                        status_body = ' '.join([f"@{username" for username in tag_usernames]) + ' Check this out!'
-                        r = api.request('statuses/update', {"in_reply_to_status_id": item['id'], "status": f"@{item['user']['screen_name']} " + status_body})
+                        status_body = ' '.join([f"@{username}" for username in tag_usernames]) + ' Check this out!'
+                        r = api.request('statuses/update', {"in_reply_to_status_id": int(item['id']), "status": status_body})
                 except:
+                        print("Error in tag")
                         user = item['user']
                         screen_name = user['screen_name']
                         CheckError(r)

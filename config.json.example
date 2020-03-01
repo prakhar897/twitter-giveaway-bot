@@ -1,17 +1,17 @@
 {
         "search-queries": ["#giveaway", "Retweet and win", "retweet and you could win", "rt for your chance to win", "#giveawayalert", "win rt", "#rttowin", "#sweepstakes"],
         "follow-keywords": [" follow ", " follower ", "following"],
-        "fav-keywords": [" fav ", " favorite "],
+        "fav-keywords": [" fav ", " favorite ", "like"],
         "scan-update-time": 83,
         "retweet-update-time": 83,
         "rate-limit-update-time": 83,
         "min-ratelimit":20,
         "min-ratelimit-retweet":96,
         "min-ratelimit-search":94,
-	"consumer-key": "Consumer Key Goes Here",
-	"consumer-secret": "Consumer Secret Goes Here",
-	"access-token-key": "Access Token Key Goes Here",
-	"access-token-secret": "Access Token Goes Here. Read README for HELP",
-        "tag-keywords": ['tag', 'comment', 'invite'],
-        "tag-usernames": ['BoarLittle', 'weatherby2019', 'dac5558', 'Ghostman45233']
+	"consumer-key": "rgqRnmoWdZRdu4hgWUdE0K3ZS",
+	"consumer-secret": "iRP2E6d4n10GyUiaprV3lHTlr6i2v5nUzX2m6tKsJJeWpgLcUh",
+	"access-token-key": "1234096465598746627-kbiPXYFrQHhUrukoBwQh6z6wAwmfKJ",
+	"access-token-secret": "SuaXqGd1Z01EL1iAuaIkuXu8bumsKTK0xF55UIE50lqV2",
+        "tag-keywords": ["tag", "comment", "invite"],
+        "tag-usernames": ["BoarLittle", "weatherby2019", "dac5558", "Ghostman45233"]
 }
