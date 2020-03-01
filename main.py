@@ -23,6 +23,8 @@ min_ratelimit_search = data["min-ratelimit-search"]
 search_queries = data["search-queries"]
 follow_keywords = data["follow-keywords"]
 fav_keywords = data["fav-keywords"]
+tag_keywords = data["tag-keywords"]
+tag_usernames = data["tag-usernames"]
 
 # Don't edit these unless you know what you're doing.
 api = TwitterAPI(consumer_key, consumer_secret, access_token_key, access_token_secret)
@@ -110,6 +112,7 @@ def UpdateQueue():
 
                         CheckForFollowRequest(post)
                         CheckForFavoriteRequest(post)
+                        CheckForTagRequest(post)
 
                         r = api.request('statuses/retweet/:' + str(post['id']))
                         CheckError(r)
@@ -119,6 +122,23 @@ def UpdateQueue():
         
                         print("Ratelimit at " + str(ratelimit[2]) + "% -> pausing retweets")
 
+
+# Check if a post requires tagging people in reply to the tweet
+def CheckForTagRequest(item):
+        text = item['text']
+        if any(word in text.lower() for word in tag_keywords):
+                try:
+                        print("Tag tweet id:", item['id'])
+                        #T.post('statuses/update', { in_reply_to_status_id: tweetId, status: `@${userName}, I like golf too`
+                        status_body = ' '.join([f"@{username}" for username in tag_usernames]) + ' Check this out!'
+                        r = api.request('statuses/update', {"in_reply_to_status_id": int(item['id']), "status": status_body})
+                except:
+                        print("Error in tag")
+                        user = item['user']
+                        screen_name = user['screen_name']
+                        CheckError(r)
+                        LogAndPrint("Tag: " + screen_name)
+                        print("Tweet body: ", item['text'])
 
 # Check if a post requires you to follow the user.
 # Be careful with this function! Twitter may write ban your application for following too aggressively
