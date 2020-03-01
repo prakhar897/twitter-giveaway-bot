@@ -104,9 +104,7 @@ def UpdateQueue():
         print("Queue length: " + str(len(post_list)))
 
         if len(post_list) > 0:
-
                 if not ratelimit[2] < min_ratelimit_retweet:
-
                         post = post_list[0]
                         LogAndPrint("Retweeting: " + str(post['id']) + " " + str(post['text'].encode('utf8')))
 
@@ -119,7 +117,6 @@ def UpdateQueue():
                         post_list.pop(0)
                 
                 else:
-        
                         print("Ratelimit at " + str(ratelimit[2]) + "% -> pausing retweets")
 
 
@@ -131,7 +128,7 @@ def CheckForTagRequest(item):
                         print("Tag tweet id:", item['id'])
                         #T.post('statuses/update', { in_reply_to_status_id: tweetId, status: `@${userName}, I like golf too`
                         status_body = ' '.join([f"@{username}" for username in tag_usernames]) + ' Check this out!'
-                        r = api.request('statuses/update', {"in_reply_to_status_id": int(item['id']), "status": status_body})
+                        r = api.request('statuses/update', {"in_reply_to_status_id": int(item['id']), "status": f"@{item['user']['screen_name']} {status_body}"})
                 except:
                         print("Error in tag")
                         user = item['user']
